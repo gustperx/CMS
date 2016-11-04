@@ -1,0 +1,1 @@
+{!!Form::textarea('about','')!!}
