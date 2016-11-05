@@ -49,6 +49,10 @@ class ClubRepository extends BaseRepository
 		}
 
 	}
+    public function getUserSelect($role)
+    {
+       return $this->getUsers($role);
+    }
 
 	public function getState()
 	{

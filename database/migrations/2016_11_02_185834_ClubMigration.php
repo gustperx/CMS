@@ -45,9 +45,18 @@ class ClubMigration extends Migration
 
             $table->longText('about');
 
+            $table->integer('user_id')->unsigned();
+
+            $table->foreign('user_id')->references('id')->on('users');
+
             $table->integer('state_id')->unsigned();
 
             $table->foreign('state_id')->references('id')->on('states')
+                ->onUpdate('cascade')->onDelete('cascade');     
+
+            $table->integer('city_id')->unsigned();
+
+            $table->foreign('city_id')->references('id')->on('cities')
                 ->onUpdate('cascade')->onDelete('cascade');     
 
             $table->integer('members')->unsigned();
@@ -94,15 +103,13 @@ class ClubMigration extends Migration
 
     public function down()
     {
+        Schema::drop('clubs_teams');  
 
+        Schema::drop('clubs');  
 
         Schema::drop('cities');  
 
         Schema::drop('states');  
-
-        Schema::drop('clubs_teams');  
-
-        Schema::drop('clubs');  
 
         Schema::drop('positions');  
 

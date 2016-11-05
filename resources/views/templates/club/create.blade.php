@@ -52,4 +52,6 @@
 
 	@include('templates.admin.js.sweetalert')
 
+	@include('templates.admin.js.jquery_numeric')
+
 @endsection()

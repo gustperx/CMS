@@ -38,11 +38,12 @@ class ClubController extends Controller
 
         $title = 'Agregar Club';
 
-        $stateId=$this->clubRepository->getState();
+        $stateId = $this->clubRepository->getState();
 
-        $cityId=$this->clubRepository->getCity(1);
+        $cityId = $this->clubRepository->getCity(1);
+        
+        return view('templates.club.create',compact('title','breadcrumb','stateId','cityId','userId'));
 
-        return view('templates.club.create',compact('title','breadcrumb','stateId','cityId'));
     }
 
     public function store(Request $request)

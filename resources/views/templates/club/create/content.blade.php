@@ -1,3 +1,69 @@
+<div class="form-group">
+
+	<label class="col-sm-3 control-label">Nombre</label>
+
+    <div class="col-sm-6">
+
+		@include('elements.html.input',
+		[
+
+			'input_placeholder'	=> 'Nombre del Usuario',
+
+			'input_icon'		=>'fa fa-user',
+
+			'input_name'		=> 'name',
+
+
+		])		
+
+    </div>
+
+</div>
+<div class="form-group">
+
+	<label class="col-sm-3 control-label">Apellido</label>
+
+    <div class="col-sm-6">
+
+		@include('elements.html.input',
+		[
+
+			'input_placeholder'	=> 'Apellido del Usuario',
+
+			'input_icon'		=>'fa fa-user',
+
+			'input_name'		=> 'lastname',
+
+
+		])		
+
+    </div>
+
+</div>
+
+<div class="form-group">
+
+	<label class="col-sm-3 control-label">Correo</label>
+
+    <div class="col-sm-6">
+
+		@include('elements.html.input',
+		[
+
+			'input_placeholder'	=> 'Correo del Usuario',
+
+			'input_icon'		=>'fa fa-user',
+
+			'input_name'		=> 'email',
+
+
+		])		
+
+    </div>
+
+</div>
+
+
 <div class="form-group ">
 
     <label class="col-sm-3 control-label">Estado</label>
@@ -78,7 +144,7 @@
 
 			'input_icon'		=>'fa fa-user',
 
-			'input_name'		=> 'name',
+			'input_name'		=> 'club_name',
 
 
 		])		
@@ -91,12 +157,14 @@
 
 	<label class="col-sm-3 control-label">Miembros</label>
 
-    <div class="col-sm-6">
+    <div class="col-sm-2">
 
 		@include('elements.html.input',
 		[
 
 			'input_placeholder'	=> 'Cantidad de miembros',
+
+			'input_class'		=> 'numeric',			
 
 			'input_icon'		=>'fa fa-user',
 
@@ -115,7 +183,13 @@
 
     <div class="col-sm-6">
 
-		@include('elements.html.textarea')		
+		@include('elements.html.textarea',[
+		
+			'textarea_name'=>'about',
+			
+			'textarea_id'=>'about'
+
+		])		
 
     </div>
 

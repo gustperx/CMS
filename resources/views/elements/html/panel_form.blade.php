@@ -11,15 +11,15 @@
 				$panel_form_model,
 
 				[
-					'route' => $panel_form_route,
+					'route' => isset($panel_form_route) ? $panel_form_route : null,
 
-				 	'method' => $panel_form_method,
+				 	'method' => isset($panel_form_method) ? $panel_form_method : null,
 
-				 	'name'=>$panel_form_name,
+				 	'name'=>isset($panel_form_name) ? $panel_form_name : null,
 
-				 	'id'=>$panel_form_id, 
+				 	'id'=>isset($panel_form_id) ? $panel_form_id : null, 
 
-				 	'class' => $panel_form_class,
+				 	'class' => isset($panel_form_class) ? $panel_form_class : null,
 
 				]) 
 

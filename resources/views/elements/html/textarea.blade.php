@@ -1,1 +1,1 @@
-{!!Form::textarea('about','')!!}
+{!!Form::textarea($textarea_name,'',['id'=>$textarea_id])!!}

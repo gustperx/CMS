@@ -40,9 +40,8 @@ class ClubSeeder extends Seeder
     {
         $data=[
 
-            ['name'=>'Pastor','state_id'=>1,'logo'=>'logo-pastor','about'=>'Nosotros somos un club de pastor','members'=>'55'],
+            ['name'=>'Pastor','user_id'=>2,'state_id'=>23,'city_id'=>437,'logo'=>'logo-pastor','about'=>'Nosotros somos un club de pastor','members'=>'55'],
 
-            ['name'=>'Golden','state_id'=>23,'logo'=>'logo-golden','about'=>'Nosotros somos un club de golden','members'=>'102'],
 
         ];
 

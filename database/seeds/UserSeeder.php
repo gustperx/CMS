@@ -3,16 +3,14 @@
 use Illuminate\Database\Seeder;
 
 use App\Models\User\User;
+
 use App\Models\User\Profile;
+
 use App\Models\User\Role;
 
 class UserSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+
     public function run()
     {
         $this->profile();   
@@ -31,7 +29,10 @@ class UserSeeder extends Seeder
 
             ['role' => 'Administrador'],
 
-            ['role' => 'Usuario']
+            ['role' => 'Usuario'],
+
+            ['role' => 'Club']
+
 
         ];
 
@@ -46,35 +47,44 @@ class UserSeeder extends Seeder
 
     public function profile()
     {
-        Profile::create([
+        $data = [
 
-            'name'      =>'Melquíades',
+            ['name' => 'Melquíades','lastname'=>'Peña','dni'=>'16340512','address'=>'Urb. Canaima casa 43-20','phone_1'=>'04143673872'],
 
-            'lastname'  =>'Peña',
+            ['name' => 'Klarissa','lastname'=>'Ferrer','dni'=>'351114','address'=>'Urb. El pilar','phone_1'=>'04146547821'],
 
-            'dni'       =>'16340512',
+            ['name' => 'Leonardo','lastname'=>'Jimenez','dni'=>'15447889','address'=>'Urb. Maranorte','phone_1'=>'04146547821'],
 
-            'address'   =>'Urb. Canaima casa 43-20',
+        ];
 
-            'phone_1'   =>'04143673872'
+        foreach ($data as $key) 
+        {
 
-        ]);
+            Profile::create($key);
+
+        }
+
     }
 
     public function user()
     {
 
-        User::create([
+        $data = [
 
-            'profile_id' => 1,
+            ['profile_id' => 1,'role_id'=>1,'email'=>'admin1@admin.com','password'=>bcrypt('123456')],
 
-            'role_id'    => 1,
+            ['profile_id' => 2,'role_id'=>4,'email'=>'club1@club.com','password'=>bcrypt('123456')],
 
-            'email'      => 'admin1@admin.com',
+            ['profile_id' => 3,'role_id'=>4,'email'=>'club2@club.com','password'=>bcrypt('123456')],
 
-            'password'   => bcrypt('123456')
+        ];
 
-        ]);
+        foreach ($data as $key) 
+        {
+
+            User::create($key);
+
+        }
 
     }
 
