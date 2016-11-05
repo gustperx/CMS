@@ -9,7 +9,7 @@ class Club extends Model
 
 	protected $table='clubs';
 
-    protected $fillable=['name','about','members','state_id'];
+    protected $fillable=['logo','name','user_id','about','members','state_id','city_id'];
 
     public function clubTeam()
     {

@@ -52,9 +52,13 @@
 
 			'input_placeholder'	=> 'Correo del Usuario',
 
+			'input_class'		=> 'unique-ajax',
+
 			'input_icon'		=>'fa fa-user',
 
 			'input_name'		=> 'email',
+			
+			'input_data_route'	=> route('ajax_unique_email',[':ID']),
 
 
 		])		
@@ -79,7 +83,7 @@
 
 			'select_id'		=> 'state_id',
 
-			'select_class'	=> 'form-control btn-ajax',
+			'select_class'	=> 'form-control select-ajax',
 
 			'select_data_route'	=> route('ajax_city',[':ID']),
 
@@ -120,7 +124,7 @@
 
 			'select_id'		=> 'city_id',
 
-			'select_class'	=> 'form-control btn-ajax',
+			'select_class'	=> 'form-control',
 
 			'select_data'	=> $cityId
 
@@ -157,7 +161,7 @@
 
 	<label class="col-sm-3 control-label">Miembros</label>
 
-    <div class="col-sm-2">
+    <div class="col-sm-3">
 
 		@include('elements.html.input',
 		[

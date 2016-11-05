@@ -5,17 +5,21 @@ use App\Repository\BaseRepository;
 
 use App\Models\Config\City;
 
+use App\Models\User\User;
 
 class HelperRepository extends BaseRepository
 {
 	private $city;
 
+	private $user;
 
 	function __construct()
 	{
         parent::__construct();
 
-		$this->city= new City();
+		$this->city = new City();
+
+		$this->user = new User;
 
 	}
 
@@ -26,11 +30,17 @@ class HelperRepository extends BaseRepository
 
 		foreach ($cities as $data) {
 
-			echo '<option id="'.$data->id.'" >'.$data->city.'</option>';
+			echo '<option value="'.$data->id.'" >'.$data->city.'</option>';
 
 		}
 		
-		
+	}
+
+	public function getEmail($email)
+	{
+
+		return $this->user->where('email','=',$email)->get();
+
 	}
 
         

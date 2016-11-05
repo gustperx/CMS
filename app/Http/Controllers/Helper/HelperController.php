@@ -27,4 +27,14 @@ class HelperController extends Controller
         return $this->helperRepository->getCity($id);
     }
 
+    public function uniqueEmail($email)
+    {
+
+        return $this->helperRepository->getEmail($email);
+        //return $email;
+        //sleep(1);
+        //return $this->helperRepository->getCity($id);
+    }
+
+
 }

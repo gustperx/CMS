@@ -71,5 +71,7 @@ Route::group(['prefix' => 'ajax','middleware' => ['auth'], 'namespace' => 'Helpe
 
     Route::get('city/{id}',            ['uses' => 'HelperController@city',  'as' => 'ajax_city']);
 
+    Route::get('unique/{email}',            ['uses' => 'HelperController@uniqueEmail',  'as' => 'ajax_unique_email']);
+
 
 });

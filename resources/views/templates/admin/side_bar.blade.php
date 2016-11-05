@@ -1,4 +1,4 @@
-<div class="static-sidebar-wrapper sidebar-inverse">
+<div class="static-sidebar-wrapper sidebar-midnightblue">
 	<div class="static-sidebar">
 		<div class="sidebar">
 			<div class="widget stay-on-collapse" id="widget-welcomebox">

@@ -8,9 +8,9 @@ function ajaxPost(route,data)
 		beforeSend: function()
 		{ 
 		
-			$("#loader").removeClass('hide')
+			$("#loader").removeClass('hide');
 
-			$("#submit").addClass('hide')
+			$("#submit").addClass('hide');
 
 		},
 
@@ -24,21 +24,21 @@ function ajaxPost(route,data)
 
 		success: function(data)
 		{
-			console.log(data)
-			$("#loader").addClass('hide')
+			console.log(data);
+			$("#loader").addClass('hide');
 
-			$("#submit").removeClass('hide')
+			$("#submit").removeClass('hide');
 
 			if(data.reset==1)
 			{
 
-				$('#form')[0].reset()
+				$('#form')[0].reset();
 
 			}
 
 			if(data.redirect== null){
 
-				simpleAlert(data.title,data.text,data.type,data.button)
+				simpleAlert(data.title,data.text,data.type,data.button);
 
 			}
 			else
@@ -50,11 +50,11 @@ function ajaxPost(route,data)
 		},
 		error:function()
 		{
-			$("#loader").addClass("hide")
+			$("#loader").addClass("hide");
 
-			$("#submit").removeClass('hide')
+			$("#submit").removeClass('hide');
 
-			simpleAlert('Malas Noticias','Encontramos problemas con la conexión a Internet','error','Volver a intentar')
+			simpleAlert('Malas Noticias','Encontramos problemas con la conexión a Internet','error','Volver a intentar');
 
 		}
 
@@ -62,18 +62,14 @@ function ajaxPost(route,data)
 
 }
 
-function ajaxSelect(route,origin,destination){
+function ajaxUnique(route,input){
 
 	$.ajax(
 	{
 
 		beforeSend: function()
 		{ 
-			origin.prop('disabled',true)
-
-			destination.prop('disabled',true)
-
-			$("#loader").removeClass('hide')
+			input.prop('disabled',true);
 
 		},
 
@@ -86,22 +82,72 @@ function ajaxSelect(route,origin,destination){
 		success: function(data)
 		{
 
-			origin.prop('disabled',false)
-			
-			destination.prop('disabled',false)
+			input.prop('disabled',false);
 
-			$("#loader").addClass("hide")
+			if(data.length == 1)
+			{
+				simpleAlert('Email en Uso','Ya existe un Usuario usando este Email','warning','Corregir');
+
+				input.val('');
+
+			}
+			
+		},
+		error:function()
+		{
+			$("#loader").addClass("hide");
+
+			input.prop('disabled',false);
+
+			simpleAlert('Malas Noticias','Encontramos problemas con la conexión a Internet','error','Volver a intentar');
+
+		}
+
+	});             
+
+
+}
+
+function ajaxSelect(route,origin,destination){
+
+	$.ajax(
+	{
+
+		beforeSend: function()
+		{ 
+			origin.prop('disabled',true);
+
+			destination.prop('disabled',true);
+
+			$("#loader").removeClass('hide');
+
+		},
+
+		cache: false,
+
+		type: "GET",
+
+		url: route,
+
+		success: function(data)
+		{
+
+			origin.prop('disabled',false);
+			
+			destination.prop('disabled',false);
+
+			$("#loader").addClass("hide");
 
 			destination.html(data)
 			
 		},
 		error:function()
 		{
-			$("#loader").addClass("hide")
+			$("#loader").addClass("hide");
 
-			origin.prop('disabled',false)
+			origin.prop('disabled',false);
 
-			destination.prop('disabled',false)
+			destination.prop('disabled',false);
 
 			simpleAlert('Malas Noticias','Encontramos problemas con la conexión a Internet','error','Volver a intentar')
 
@@ -119,9 +165,9 @@ function ajaxDelete(route,row)
 		beforeSend: function()
 		{ 
 		
-			$("#loader").removeClass('hide')
+			$("#loader").removeClass('hide');
 
-			$("#submit").addClass('hide')
+			$("#submit").addClass('hide');
 
 		},
 
@@ -133,17 +179,17 @@ function ajaxDelete(route,row)
 
 		success: function(data)
 		{
-			simpleAlert(data.title,data.text,data.type,data.button)
+			simpleAlert(data.title,data.text,data.type,data.button);
 			
-			row.remove()
+			row.remove();
 		},
 		error:function()
 		{
-			$("#loader").addClass("hide")
+			$("#loader").addClass("hide");
 
-			$("#submit").removeClass('hide')
+			$("#submit").removeClass('hide');
 
-			simpleAlert('Malas Noticias','Encontramos problemas con la conexión a Internet','error','Volver a intentar')
+			simpleAlert('Malas Noticias','Encontramos problemas con la conexión a Internet','error','Volver a intentar');
 
 		}
 
@@ -202,22 +248,33 @@ $(document).ready(function(){
 
         var route = form.attr('action').replace(':ID', id);
 
-        //console.log(route)
-        deleteAlert(route,row)
+        deleteAlert(route,row);
 
    });
 
-    $('.btn-ajax').change(function(e){
+    $('.select-ajax').change(function(e){
 
         e.preventDefault();
 
         origin = $(this);
 
-        destination = $('#'+origin.data('destination'))
+        destination = $('#'+origin.data('destination'));
 
         var route = origin.data('route').replace(':ID',origin.val());
 
-       	ajaxSelect(route,origin,destination)
+       	ajaxSelect(route,origin,destination);
+
+   });
+
+    $('.unique-ajax').change(function(e){
+
+        e.preventDefault();
+
+        var input = $(this);
+
+        var route = input.data('route').replace(':ID',input.val());
+
+        ajaxUnique(route,input);
 
    });
 

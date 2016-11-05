@@ -1,11 +1,11 @@
-<header id="topnav" class="navbar navbar-midnightblue navbar-fixed-top clearfix" role="banner">
+<header id="topnav" class="navbar navbar-default navbar-fixed-top clearfix" role="banner" >
 	<span id="trigger-sidebar" class="toolbar-trigger toolbar-icon-bg">
 		<a data-toggle="tooltips" data-placement="right" title="Toggle Sidebar">
 			<span class="icon-bg"><i class="fa fa-fw fa-bars"></i>
 			</span>
 		</a>
 	</span>
-	<a class="navbar-brand" href="index.html">Avenger</a>
+	<a class="" href="#"><img src="/{{Config::get()->logo}}"  style="padding-top: 5px;width:150px"></a>
 	<ul class="nav navbar-nav toolbar pull-right">
 		<li class="dropdown toolbar-icon-bg">
 			<a href="#" id="navbar-links-toggle" data-toggle="collapse" data-target="header>.navbar-collapse">

@@ -49,7 +49,6 @@ class ClubController extends Controller
     public function store(Request $request)
     {
         $this->clubRepository->createClub($request->all());
-        
         if($request->ajax())
         {
 
@@ -68,7 +67,7 @@ class ClubController extends Controller
                 'redirect'  => null
             ];
 
-            return response()->json($message, 200);
+           return response()->json($message, 200);
         }
     }
 
