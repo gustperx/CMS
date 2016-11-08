@@ -1,1 +1,9 @@
-{!!Form::textarea($textarea_name,'',['id'=>$textarea_id])!!}
+{!!Form::textarea(
+
+	$textarea_name,
+
+	$textarea_value,
+
+	['id'=>$textarea_id])
+
+!!}

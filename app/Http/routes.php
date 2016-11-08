@@ -75,3 +75,11 @@ Route::group(['prefix' => 'ajax','middleware' => ['auth'], 'namespace' => 'Helpe
 
 
 });
+
+Route::group(['prefix' => 'upload','middleware' => ['auth'], 'namespace' => 'Upload'], function(){
+
+    Route::post('',            ['uses' => 'UploadController@store',  'as' => 'post_upload']);
+
+
+
+});

@@ -6,7 +6,9 @@
 
 				<th align="center">Logo</th>
 
-				<th>Red Social</th>
+				<th>Club</th>
+
+				<th>Ubicación</th>
 
 				<th>Miembros</th>
 
@@ -23,12 +25,15 @@
 
 					<tr data-id="{{$club->id}}">
 
-						<td width="100" align="center">
+						<td width="50" align="center">
+						<img src="{{$club->logo->file}} " width="100">
 							
 
 						</td>
 
 						<td>{{$club->name}}</td>
+
+						<td>{{$club->state->state}} / {{$club->city->city}}</td>
 
 						<td>{{$club->members}}</td>
 

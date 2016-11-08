@@ -7,7 +7,9 @@
 		
 		'data-route'=>isset($select_data_route) ? $select_data_route : null,
 
-		'data-destination'=>isset($select_data_destination) ? $select_data_destination : null
+		'data-destination'=>isset($select_data_destination) ? $select_data_destination : null,
+
+		'data-loader'=>isset($select_data_loader) ? $select_data_loader : null
 
 		
 	])

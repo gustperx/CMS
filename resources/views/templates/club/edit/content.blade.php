@@ -1,0 +1,1 @@
+@include('templates.club.create.club_inputs')

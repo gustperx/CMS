@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
 
             $table->string('name', 60);
 
+            $table->string('avatar',120);
+
             $table->string('lastname', 60);
 
             $table->string('dni', 15);

@@ -11,7 +11,7 @@
 	@include('elements.html.panel_form',
 		[
 
-			'panel_form_model'		=> null,
+			'panel_form_model'		=> $club,
 
 			'panel_form_type'		=> 'model',
 
@@ -21,13 +21,13 @@
 
 			'panel_form_method'		=> 'POST',
 
-			'panel_form_route'		=> 'store_club',
+			'panel_form_route'		=> ['update_club',$club->id],
 
 			'panel_form_class'		=> 'form-horizontal row-border',
 			
-			'panel_form_title'		=> 'Agregar Club',
+			'panel_form_title'		=> 'Editar Club',
 
-			'panel_form_content'	=> 'templates.club.create.content',
+			'panel_form_content'	=> 'templates.club.edit.content',
 
 			'panel_form_footer'		=> 'templates.club.create.footer'
 
@@ -44,8 +44,6 @@
 
 @section('footer')
 
-    @include('templates.admin.js.jquery_upload')
-
 	@include('templates.admin.js.jquery_validate')
 
     @include('templates.admin.js.resource')
@@ -55,7 +53,5 @@
 	@include('templates.admin.js.sweetalert')
 
 	@include('templates.admin.js.jquery_numeric')
-
-    @include('templates.club.create.upload_script')
 
 @endsection()

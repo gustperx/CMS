@@ -13,7 +13,7 @@ class ClubSeeder extends Seeder
     {
 
         $this->position();
-        $this->club();
+       // $this->club();
 
     }
 

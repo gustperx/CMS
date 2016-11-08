@@ -23,7 +23,7 @@ class HelperController extends Controller
 
     public function city($id)
     {
-        sleep(1);
+    
         return $this->helperRepository->getCity($id);
     }
 
@@ -31,9 +31,7 @@ class HelperController extends Controller
     {
 
         return $this->helperRepository->getEmail($email);
-        //return $email;
-        //sleep(1);
-        //return $this->helperRepository->getCity($id);
+
     }
 
 

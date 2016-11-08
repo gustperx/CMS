@@ -120,13 +120,39 @@ class ClubRepository extends BaseRepository
 
 	}
 
+	public function getBreadcrumbEdit(){
+		
+        $array=[
+
+            [   
+                'name'=>'Lista de Clubes Afiliados',
+
+                'url'=>route('index_club'),
+
+            ],
+            [
+
+                'name'=>'Editar Club',
+
+                'url'=>null,
+
+
+            ]
+
+        ];
+
+        return $this->GetCollection($array);
+
+	}
+
+
 	public function createClub($data)
 	{
 		$profileData = $this->profile->create([
 
-			'name'		=> $data['name'],
+			'name'		=> $data['user_name'],
 
-			'lastname'	=> $data['lastname']
+			'lastname'	=> $data['user_lastname']
 
 		]);
 
@@ -144,7 +170,7 @@ class ClubRepository extends BaseRepository
 		
 		$cluData = $this->club->create([
 
-			'name'		=>$data['club_name'],
+			'name'		=>$data['name'],
 
 			'user_id'	=>$userData->id,
 
@@ -152,7 +178,7 @@ class ClubRepository extends BaseRepository
 
 			'city_id'	=>$data['city_id'],
 
-			'logo'		=>'logo-pastor',
+			'file_id'	=> $data['file_id'],
 
 			'about'		=> $data['about'],
 
@@ -163,6 +189,10 @@ class ClubRepository extends BaseRepository
 		return $cluData;
 	}
 
+	public function updateClub($id,$data)
+	{
+		return $this->club->findOrFail($id)->update($data);
+	}
 	public function deleteClub($id)
 	{
 		return $this->club->destroy($id);

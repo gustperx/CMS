@@ -108,7 +108,7 @@ function ajaxUnique(route,input){
 
 }
 
-function ajaxSelect(route,origin,destination){
+function ajaxSelect(route,origin,destination,loader){
 
 	$.ajax(
 	{
@@ -119,7 +119,7 @@ function ajaxSelect(route,origin,destination){
 
 			destination.prop('disabled',true);
 
-			$("#loader").removeClass('hide');
+			loader.removeClass('hide');
 
 		},
 
@@ -136,14 +136,14 @@ function ajaxSelect(route,origin,destination){
 			
 			destination.prop('disabled',false);
 
-			$("#loader").addClass("hide");
+			loader.addClass("hide");
 
 			destination.html(data)
 			
 		},
 		error:function()
 		{
-			$("#loader").addClass("hide");
+			loader.addClass("hide");
 
 			origin.prop('disabled',false);
 
@@ -256,13 +256,15 @@ $(document).ready(function(){
 
         e.preventDefault();
 
-        origin = $(this);
+        var origin = $(this);
 
-        destination = $('#'+origin.data('destination'));
+        var destination = $('#'+origin.data('destination'));
+
+        var loader = $('#'+origin.data('loader'));
 
         var route = origin.data('route').replace(':ID',origin.val());
 
-       	ajaxSelect(route,origin,destination);
+       	ajaxSelect(route,origin,destination,loader);
 
    });
 

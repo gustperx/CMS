@@ -20,6 +20,8 @@
 				 	'id'=>isset($panel_form_id) ? $panel_form_id : null, 
 
 				 	'class' => isset($panel_form_class) ? $panel_form_class : null,
+					
+					'files' => true				 	
 
 				]) 
 

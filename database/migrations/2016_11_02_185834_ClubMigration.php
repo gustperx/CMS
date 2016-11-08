@@ -8,6 +8,22 @@ class ClubMigration extends Migration
 {
     public function up()
     {
+        Schema::create('files', function (Blueprint $table) {
+            
+            $table->increments('id');
+
+            $table->string('file', 200);
+
+            $table->string('thumb', 200);
+
+            $table->integer('user_id')->unsigned();
+
+            $table->foreign('user_id')->references('id')->on('users')
+
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->timestamps();
+        });
 
         Schema::create('states', function (Blueprint $table) {
 
@@ -39,7 +55,10 @@ class ClubMigration extends Migration
 
             $table->increments('id');
 
-            $table->string('logo', 200);
+            $table->integer('file_id')->unsigned();
+            
+            $table->foreign('file_id')->references('id')->on('files')
+                ->onUpdate('cascade')->onDelete('cascade');     
 
             $table->string('name', 50);
 
@@ -107,6 +126,8 @@ class ClubMigration extends Migration
 
         Schema::drop('clubs');  
 
+        Schema::drop('files');  
+        
         Schema::drop('cities');  
 
         Schema::drop('states');  

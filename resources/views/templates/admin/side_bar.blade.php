@@ -1,20 +1,51 @@
 <div class="static-sidebar-wrapper sidebar-midnightblue">
-	<div class="static-sidebar">
-		<div class="sidebar">
-			<div class="widget stay-on-collapse" id="widget-welcomebox">
-				<div class="widget-body welcome-box tabular">
-					<div class="tabular-row">
-						<div class="tabular-cell welcome-avatar">
-							<a href="#"><img src="" class="avatar"></a>
-						</div>
-						<div class="tabular-cell welcome-options">
-							<span class="welcome-text">Welcome,</span>
-							<a href="#" class="name">Jonathan Smith</a>
-						</div>
-					</div>
-				</div>
-			</div>
 
+	<div class="static-sidebar">
+
+		<div class="sidebar">
+
+			<div class="widget stay-on-collapse" id="widget-welcomebox">
+
+				<div class="widget-body welcome-box tabular">
+
+					<div class="tabular-row">
+
+						<div class="tabular-cell welcome-avatar">
+
+							@if (Auth::user()->profile->avatar)
+
+								<a href="#">
+
+									<img src="" class="avatar">
+
+								</a>
+
+							@else
+
+								<a href="#">
+
+									<img src="/assets/img/male.png" class="avatar">
+
+								</a>
+
+							@endif
+
+						</div>
+
+						<div class="tabular-cell welcome-options">
+
+							<span class="welcome-text">Bienvenido,</span>
+
+							<a href="#" class="name">{{Auth::user()->profile->name}}</a>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+			
 			<div class="widget stay-on-collapse" id="widget-sidebar">
 
 				<nav role="navigation" class="widget-body">

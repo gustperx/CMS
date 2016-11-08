@@ -1,11 +1,11 @@
 rules: {
-  club_name: {
-    required: true
-  },
   name: {
     required: true
   },
-  lastname: {
+  user_name: {
+    required: true
+  },
+  user_lastname: {
     required: true
   },
 
@@ -15,16 +15,19 @@ rules: {
   },
   city_id: {
     required: true
+  },
+  file:{
+    required: true
   }
 },
 messages: {
-  club_name: {
-    required: 'Debe ingresar el Nombre del Usuario'
-  },
   name: {
+    required: 'Debe ingresar el Nombre del club'
+  },
+  user_name: {
     required: 'Debe ingresar el Nombre'
   },
-  lastname: {
+  user_lastname: {
     required: 'Debe ingresar el Apellido'
   },
   email: {
@@ -33,5 +36,8 @@ messages: {
   },
   city_id: {
     required: 'Debe seleccionar un Estado'
+  },
+  file:{
+    required: 'Debe seleccionar el Logo del Club'
   }
 }

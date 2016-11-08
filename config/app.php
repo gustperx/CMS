@@ -140,6 +140,8 @@ return [
         /*
          * Application Service Providers...
          */
+        Intervention\Image\ImageServiceProvider::class,
+
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
@@ -203,6 +205,7 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'Config'    => App\Facades\ConfigClass::class,
+        'Image'       => Intervention\Image\Facades\Image::class,        
         'MainMenu'    => App\Facades\MenuClass::class,
         'Access' => Styde\Html\Facades\Access::class,
 
