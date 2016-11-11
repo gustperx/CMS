@@ -34,18 +34,11 @@ class SiteController extends Controller
 
     	$contents = $this->siteRepository->getContent($slug);
     	
-    	foreach ($contents as $content) {
+    	foreach ($contents->sections() as $section) {
 
-    		echo $content->title;
-
-    		foreach ($content->sections() as $section) {
-
-    			dd($section->title);
-
-    		}
-
+    		dd($section);
+    		
     	}
-        //return view('templates.site.index',compact('content'));
 
     }
 }

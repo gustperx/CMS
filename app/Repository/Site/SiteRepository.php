@@ -19,7 +19,7 @@ class SiteRepository extends BaseRepository
 
 	public function getContent($slug)
 	{
-		return $this->content->where('slug',$slug)->get();
+		return $this->content->where('slug',$slug)->first();
 	}
 
 }
