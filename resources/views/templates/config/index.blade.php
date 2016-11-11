@@ -42,6 +42,33 @@
 
 @endsection()
 
+@section('uploadFile')
+
+    if(file.status=='OK')
+    {
+        simpleAlert('Felicidades','Su imagen se ha subido correctamente','success','Ok');
+
+        $("#fileUpload").addClass('hide')
+        
+        $('#logo_id').val(file.fileId)
+
+    }else{
+
+        simpleAlert('Error','Imagen excede los 2 MB o es un archivo no permitido','error','Corregir');
+
+        $('#progress .progress-bar').css(
+
+            'width',
+
+            0 + '%'
+            
+        );
+
+    }
+
+@endsection()
+
+
 @section('footer')
 
 	@include('templates.admin.js.jquery_validate')
@@ -51,5 +78,10 @@
 	@include('templates.admin.js.form_validate')    
 
 	@include('templates.admin.js.sweetalert')
+
+    @include('templates.admin.js.jquery_upload')
+
+    @include('templates.admin.js.upload_script')
+
 
 @endsection()

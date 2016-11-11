@@ -28,10 +28,6 @@ class UploadController extends Controller
     public function __construct()
     {
 
-        $this->local = public_path('assets/img/upload/clubs/'.Auth::id());
-
-        $this->path = 'assets/img/upload/clubs/'.Auth::id().'/';
-
         $this->uploadRepository = new UploadRepository();
 
     }
@@ -47,8 +43,13 @@ class UploadController extends Controller
 
     public function store(Request $request)
     {
-        //dd($request->all());
+       // dd($request->all());
+
         $response = new stdClass();
+
+        $this->local = public_path($request->routeFile.Auth::id());
+
+        $this->path = $request->routeFile.Auth::id().'/';
 
         $file = $request->file('file');
 
@@ -58,7 +59,7 @@ class UploadController extends Controller
 
             $file->move($this->local,$fileName);
 
-            $route = $this->path.$fileName;
+            $route = '/'.$this->path.$fileName;
 
             $fileId = $this->uploadRepository->fileCreate($route);
 

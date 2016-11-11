@@ -1,13 +1,25 @@
 <?php
 
 namespace App\Classes;
+
 use App\Models\Config\Config;
 
+use App\Models\File\File;
+
 class ConfigClass {
+
+	private $config;
+
+	function __construct()
+	{
+		$this->config = new Config();
+	}
+
     public function get($data = [])
     {
-		$config=Config::findOrFail(1);
-
-		return $config;
+		return $this->config->findOrFail(1);
     }
+
+
+
 }

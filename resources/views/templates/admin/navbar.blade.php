@@ -5,7 +5,7 @@
 			</span>
 		</a>
 	</span>
-	<a class="" href="#"><img src="/{{Config::get()->logo}}"  style="padding-top: 5px;width:150px"></a>
+	<a class="" href="#"><img src="{{Config::get()->logo->file}}" title="{{Config::get()->logo->title}}" alt="{{Config::get()->logo->alt}}"  style="padding-top: 5px;width:150px"></a>
 	<ul class="nav navbar-nav toolbar pull-right">
 		<li class="dropdown toolbar-icon-bg">
 			<a href="#" id="navbar-links-toggle" data-toggle="collapse" data-target="header>.navbar-collapse">
@@ -84,7 +84,7 @@
 				<li><a href="#"><span class="pull-left">Statement</span> <i class="pull-right fa fa-list-alt"></i></a></li>
 				<li><a href="#"><span class="pull-left">Withdrawals</span> <i class="pull-right fa fa-dollar"></i></a></li>
 				<li class="divider"></li>
-				<li><a href="#"><span class="pull-left">Sign Out</span> <i class="pull-right fa fa-sign-out"></i></a></li>
+				<li><a href="/login/end"><span class="pull-left">Sign Out</span> <i class="pull-right fa fa-sign-out"></i></a></li>
 			</ul>
 		</li>
 

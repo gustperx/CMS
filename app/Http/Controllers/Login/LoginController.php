@@ -23,9 +23,10 @@ class LoginController extends Controller
     }
     public function logout(){
 
+        /*return "Hola";*/
         Auth::logout();
 
-        return Redirect::to('/');
+        return Redirect::to('/login');
         
     }
 
@@ -41,21 +42,7 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
-      /*  $message = [
-
-            'title'     => $request->email,
-
-            'text'      => $request->password,
-
-            'type'      => 'error',
-
-            'button'    => 'Volver a intentar',
-
-            'redirect'  => null
-        ];
-
-        return response()->json($message, 200);*/
-
+        sleep(2);
         if($request->ajax())
         {
 

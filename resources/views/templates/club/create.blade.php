@@ -42,9 +42,33 @@
 
 @endsection()
 
-@section('footer')
+@section('uploadFile')
 
-    @include('templates.admin.js.jquery_upload')
+    if(file.status=='OK')
+    {
+        simpleAlert('Felicidades','Su imagen se ha subido correctamente','success','Ok');
+
+        $("#fileUpload").addClass('hide')
+        
+        $('#file_id').val(file.fileId)
+
+    }else{
+
+        simpleAlert('Error','Imagen excede los 2 MB o es un archivo no permitido','error','Corregir');
+
+        $('#progress .progress-bar').css(
+
+            'width',
+
+            0 + '%'
+            
+        );
+
+    }
+
+@endsection()
+
+@section('footer')
 
 	@include('templates.admin.js.jquery_validate')
 
@@ -56,6 +80,8 @@
 
 	@include('templates.admin.js.jquery_numeric')
 
-    @include('templates.club.create.upload_script')
+    @include('templates.admin.js.jquery_upload')
+
+    @include('templates.admin.js.upload_script')
 
 @endsection()

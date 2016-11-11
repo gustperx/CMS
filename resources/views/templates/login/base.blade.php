@@ -8,7 +8,7 @@
 	<body class="focused-form">
 		<div class="container" id="login-form">
 			<a href="#" class="login-logo">
-				<img src="{{Config::get()->logo}}" width="200">
+				<img src="{{Config::get()->logo->file}}" width="200">
 			</a>
 			@yield('content')
 		</div>

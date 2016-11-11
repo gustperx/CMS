@@ -5,14 +5,21 @@ Route::get('error', function(){
    abort(500);
 });
 
-Route::group(['prefix' => 'dashboard','middleware' => ['auth'], 'namespace' => 'Dashboard'], function(){
+Route::group(['prefix' => 'admin','middleware' => ['auth'], 'namespace' => 'Dashboard'], function(){
 
     Route::get('/',      ['uses' => 'DashboardController@index',  'as' => 'index_dashboard']);
 
 });
 
+Route::group(['prefix' => '', 'namespace' => 'Site'], function(){
 
-Route::group(['prefix' => 'social','middleware' => ['auth'], 'namespace' => 'Social'], function(){
+    Route::get('/',      ['uses' => 'SiteController@index',  'as' => 'index_site']);
+
+    Route::get('/{slug}',      ['uses' => 'SiteController@content',  'as' => 'index_site']);
+
+});
+
+Route::group(['prefix' => 'admin/social','middleware' => ['auth'], 'namespace' => 'Social'], function(){
 
     Route::get('/',            ['uses' => 'SocialController@index',  'as' => 'index_social']);
 
@@ -28,7 +35,7 @@ Route::group(['prefix' => 'social','middleware' => ['auth'], 'namespace' => 'Soc
 
 });
 
-Route::group(['prefix' => 'club','middleware' => ['auth'], 'namespace' => 'Club'], function(){
+Route::group(['prefix' => 'admin/club','middleware' => ['auth'], 'namespace' => 'Club'], function(){
 
     Route::get('/',            ['uses' => 'ClubController@index',  'as' => 'index_club']);
 
@@ -44,19 +51,33 @@ Route::group(['prefix' => 'club','middleware' => ['auth'], 'namespace' => 'Club'
 
 });
 
+Route::group(['prefix' => 'admin/content','middleware' => ['auth'], 'namespace' => 'Content'], function(){
 
+    Route::get('/',            ['uses' => 'ContentController@index',  'as' => 'index_content']);
 
-Route::group(['prefix' => '', 'namespace' => 'Login'], function(){
+    Route::get('/create',      ['uses' => 'ContentController@create',  'as' => 'create_content']);
 
-    Route::get('/',             ['uses' => 'LoginController@index', 'middleware' => ['guest'] ,     'as' => 'index_login']);
+    Route::get('/edit/{id}',['uses' => 'ContentController@edit',  'as' => 'edit_content']);
 
-    Route::post('login',        ['uses' => 'LoginController@store',    'as' => 'post_login']);
+    Route::post('/store',['uses' => 'ContentController@store',  'as' => 'store_content']);
 
-    Route::get('logout',        ['uses' => 'LoginController@logout',     'as' => 'logout_login']);
+    Route::post('/update/{id}',['uses' => 'ContentController@update',  'as' => 'update_content']);
+
+    Route::get('/destroy/{id}',['uses' => 'ContentController@destroy',  'as' => 'destroy_content']);
 
 });
 
-Route::group(['prefix' => 'config','middleware' => ['auth'], 'namespace' => 'Config'], function(){
+Route::group(['prefix' => 'admin/login', 'namespace' => 'Login'], function(){
+
+    Route::get('/',             ['uses' => 'LoginController@index', 'middleware' => ['guest'] ,     'as' => 'index_login']);
+
+    Route::post('/login',        ['uses' => 'LoginController@store',    'as' => 'post_login']);
+
+    Route::get('/end',        ['uses' => 'LoginController@logout',     'as' => 'logout_login']);
+
+});
+
+Route::group(['prefix' => 'admin/config','middleware' => ['auth'], 'namespace' => 'Config'], function(){
 
     Route::get('/',            ['uses' => 'ConfigController@index',  'as' => 'index_config']);
 
@@ -66,8 +87,7 @@ Route::group(['prefix' => 'config','middleware' => ['auth'], 'namespace' => 'Con
 
 });
 
-
-Route::group(['prefix' => 'ajax','middleware' => ['auth'], 'namespace' => 'Helper'], function(){
+Route::group(['prefix' => 'admin/ajax','middleware' => ['auth'], 'namespace' => 'Helper'], function(){
 
     Route::get('city/{id}',            ['uses' => 'HelperController@city',  'as' => 'ajax_city']);
 
@@ -76,7 +96,7 @@ Route::group(['prefix' => 'ajax','middleware' => ['auth'], 'namespace' => 'Helpe
 
 });
 
-Route::group(['prefix' => 'upload','middleware' => ['auth'], 'namespace' => 'Upload'], function(){
+Route::group(['prefix' => 'admin/upload','middleware' => ['auth'], 'namespace' => 'Upload'], function(){
 
     Route::post('',            ['uses' => 'UploadController@store',  'as' => 'post_upload']);
 

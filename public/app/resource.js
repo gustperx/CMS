@@ -7,10 +7,10 @@ function ajaxPost(route,data)
 
 		beforeSend: function()
 		{ 
-		
-			$("#loader").removeClass('hide');
 
 			$("#submit").addClass('hide');
+
+			$("#loader").removeClass('hide');
 
 		},
 
@@ -24,10 +24,7 @@ function ajaxPost(route,data)
 
 		success: function(data)
 		{
-			console.log(data);
-			$("#loader").addClass('hide');
-
-			$("#submit").removeClass('hide');
+			//console.log(data);
 
 			if(data.reset==1)
 			{
@@ -47,6 +44,11 @@ function ajaxPost(route,data)
 				window.location.replace(data.redirect);				
 
 			}
+
+			$("#loader").addClass('hide');
+
+			$("#submit").removeClass('hide');
+
 		},
 		error:function()
 		{

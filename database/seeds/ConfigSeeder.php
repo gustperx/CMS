@@ -20,6 +20,8 @@ use App\Models\Config\State;
 
 use App\Models\Config\City;
 
+use App\Models\File\File;
+
 class ConfigSeeder extends Seeder
 {
     /**
@@ -29,6 +31,8 @@ class ConfigSeeder extends Seeder
      */
     public function run()
     {
+        
+        $this->file();        
 
         $this->config();
 
@@ -48,6 +52,23 @@ class ConfigSeeder extends Seeder
 
         $this->city();
 
+       
+
+    }
+
+    public function file()
+    {
+        File::create([
+
+            'file'      => 'assets/img/upload/logos/1/adocanino.png',
+
+            'title'     => 'Adocanino.com',
+
+            'alt'       => 'Adiestramiento Canino',
+
+            'user_id'   => 1,
+
+        ]); 
     }
 
     public function config()
@@ -55,9 +76,7 @@ class ConfigSeeder extends Seeder
 
         Config::create([
 
-            'logo'      => 'assets/img/upload/adocanino.png',
-
-            'favicon'   => 'assets/img/upload/favicon.ico',
+            'logo_id'   => 1,
 
             'title'     => 'Sistema Adocanino'
 
@@ -136,6 +155,8 @@ class ConfigSeeder extends Seeder
 
             ['menu_id'=>1,'title'=>'Clubes','route'=>'','icon'=>'fa fa-users'],
 
+            ['menu_id'=>1,'title'=>'Contenidos','route'=>'','icon'=>'fa fa-newspaper-o'],
+
         ];
 
         foreach ($data as $key) {
@@ -157,6 +178,10 @@ class ConfigSeeder extends Seeder
             ['menu_lvl1_id'=>2,'title'=>'Lista de Clubes','route'=>'index_club','icon'=>'fa fa-comments'],
 
             ['menu_lvl1_id'=>2,'title'=>'Crear Club','route'=>'create_club','icon'=>'fa fa-plus'],
+
+            ['menu_lvl1_id'=>3,'title'=>'Crear Contenido','route'=>'create_content','icon'=>'fa fa-plus'],
+
+            ['menu_lvl1_id'=>3,'title'=>'Lista Contenidos','route'=>'index_content','icon'=>'fa fa-search'],
 
         ];
 

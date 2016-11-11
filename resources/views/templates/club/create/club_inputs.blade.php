@@ -25,7 +25,7 @@
 
 		])
 
-		<input type="hidden" name="file_id" id="file_id" value="">
+		<input type="hidden" name="file_id" id="file_id" value="{{isset($club->file_id) ? $club->file_id : null}}">
 
     </div>
 
@@ -139,35 +139,14 @@
 
     <div class="col-sm-6">
 
-		<div class="fileinput fileinput-new" data-provides="fileinput">
-
-			<div class="input-group">
-
-				<span class="input-group-btn">
-
-					<span class="btn btn-default btn-file">
-
-						<span class="fileinput-new">Seleccione una Imagen</span>
-
-						<span class="fileinput-exists">Change</span>
-
-						<input id="fileupload" type="file" name="file" id="file">
-
-					</span>
-					
-				</span>
-			</div>
-		</div>
+		@include('elements.html.input_file',['fileupload_route'=>'assets/img/upload/clubs/'])
 
     </div>
 
     <div class="col-sm-12">
 
-	    <div id="progress" class="progress progress-striped active" style="height: 15px;">
-
-	      <div id="" class="progress-bar progress-bar-primary" style="width: 0%"></div>
-
-	    </div>
+    	@include('elements.html.progressbar')
+    	
     </div>
 
 </div>
