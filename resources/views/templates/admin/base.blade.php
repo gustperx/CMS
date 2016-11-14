@@ -2,13 +2,14 @@
 
 <html lang="en">
 
-<head>
+	<head>
 
-	@include('templates.admin.head')
+		@include('templates.admin.head')
 
-	@include('templates.admin.css.css')
+		@include('templates.admin.css.css')
 
-	@yield('head')
+		@yield('head')
+	</head>
 
 	<body class="infobar-overlay sidebar-hideon-collpase sidebar-scroll">
 

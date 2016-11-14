@@ -11,6 +11,16 @@ body {
 }
 /* ------------------------------------------------------------------------------------------ Preloader */
 
+.breadcrumb{
+	background-color:#F3F3F3 ;
+	height: 50px;
+	padding-top: 15px;
+	margin-bottom: 0;
+	border-radius: 0px;
+	border-bottom-style: solid;
+	border-bottom: 2px solid #99A1BA;
+
+}
 #preloader {
 	background-color: #FFF;
 	width: 100%;
@@ -1367,8 +1377,9 @@ section#blog-page {
 	font-weight: 300;
 }
 .blog-single-post-heading {
+	background-color: #333333;
 	background-attachment: fixed;
-	background-image: url(../img/parallax/4.jpg);
+	/*background-image: url(../img/parallax/4.jpg);*/
 	background-repeat: repeat-y;
 	background-position: 50% 95%;
 }
@@ -1518,6 +1529,10 @@ ul.media-list li {
 .about-blog, .tag-list {
 	margin-top: 40px;
 }
+.breadcrumb, .tag-list {
+	margin-top: 0px;
+}
+
 .tag-list a {
 	border: 1px solid #d9d9d9;
 	display: inline-block;
@@ -1617,8 +1632,8 @@ section#clients {
 	color: #fff;
 }
 #social-media {
-	background-attachment: fixed;
-	background-image: url(../img/parallax/4.jpg);
+	/*background-attachment: fixed;
+	background-image: url(../img/parallax/4.jpg);*/
 	background-repeat: repeat-y;
 	background-position: 50% 0;
 }

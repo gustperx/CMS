@@ -22,7 +22,7 @@ class ContentRepository extends BaseRepository
 
 			case 0:
 
-				return $this->content->orderBy('id', 'desc')->paginate(10);
+				return $this->content->orderBy('title', 'asc')->paginate(10);
 
 				break;
 
@@ -34,6 +34,12 @@ class ContentRepository extends BaseRepository
 
 		}
 
+	}
+
+	public function getContentsList()
+	{
+
+		return $this->content->lists('title','id');
 	}
 
 	public function getBreadcrumbIndex(){

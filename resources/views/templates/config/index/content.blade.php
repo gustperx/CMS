@@ -1,6 +1,6 @@
 <div class="form-group">
 
-	<label class="col-sm-3 control-label">Titulo de la Pagina</label>
+	<label class="col-sm-3 control-label">Titulo del Sistema Administrativo</label>
 
     <div class="col-sm-6">
 
@@ -11,7 +11,29 @@
 
 			'input_icon'		=>'fa fa-user',
 
-			'input_name'		=> 'title',
+			'input_name'		=> 'admin_title',
+
+
+		])		
+
+    </div>
+
+</div>
+
+<div class="form-group">
+
+	<label class="col-sm-3 control-label">Titulo del Sitio</label>
+
+    <div class="col-sm-6">
+
+		@include('elements.html.input',
+		[
+
+			'input_placeholder'	=> 'Titulo',
+
+			'input_icon'		=>'fa fa-user',
+
+			'input_name'		=> 'site_title',
 
 
 		])		
@@ -20,6 +42,30 @@
     </div>
 
 </div>
+<div class="form-group ">
+    <label class="col-sm-3 control-label">Home</label>
+
+    <div class="col-sm-4">
+		@include('elements.html.select',
+		[
+
+			'select_name'	=> 'home_id',
+
+			'value'			=> isset($configs->home_id) ? $configs->home_id : null,
+
+			'select_id'		=> 'home_id',
+
+			'select_class'	=> 'form-control',
+
+			'select_data'	=> $contentId
+
+		])
+
+
+    </div>
+    
+</div>
+
 
 <div class="form-group" id="fileUpload">
 

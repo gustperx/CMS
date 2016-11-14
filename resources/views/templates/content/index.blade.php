@@ -27,7 +27,7 @@
 
 		]
 	)
-
+	{!! $contents->render() !!}
 @endsection()
 
 @section('validate')

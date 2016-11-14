@@ -27,11 +27,16 @@ class Club extends Model
 
     public function city()
     {
+
         return $this->hasOne('App\Models\Config\City','id','city_id');
+
     }
+    
     public function logo()
     {
+
         return $this->hasOne('App\Models\File\File','id','file_id');
+
     }
 
 	

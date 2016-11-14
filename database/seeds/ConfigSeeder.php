@@ -22,13 +22,11 @@ use App\Models\Config\City;
 
 use App\Models\File\File;
 
+use App\Models\Menu\MenuSite;
+
+
 class ConfigSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         
@@ -52,23 +50,27 @@ class ConfigSeeder extends Seeder
 
         $this->city();
 
-       
+        $this->menuSite();
+      
 
     }
 
     public function file()
     {
-        File::create([
+        $data=[
 
-            'file'      => 'assets/img/upload/logos/1/adocanino.png',
+            ['file'=> '/assets/img/upload/logos/1/adocanino.png','title'=>'Adocanino.com','alt'=>'Adiestramiento Canino','user_id'=> 1],
 
-            'title'     => 'Adocanino.com',
+            ['file'=> '/assets/img/upload/modules/1/modulo-servicios-x3.png','title'=>'','alt'=>'','user_id'=> 1]
 
-            'alt'       => 'Adiestramiento Canino',
+        ];
 
-            'user_id'   => 1,
+        foreach ($data as $key) {
 
-        ]); 
+            File::create($key); 
+
+        }
+        
     }
 
     public function config()
@@ -78,7 +80,11 @@ class ConfigSeeder extends Seeder
 
             'logo_id'   => 1,
 
-            'title'     => 'Sistema Adocanino'
+            'admin_title'     => 'Sistema Adocanino.com',
+
+            'site_title'     => 'Adocanino | Adiestramiento Canino',
+
+            'home_id'   => 1
 
         ]);	
 
@@ -763,6 +769,33 @@ class ConfigSeeder extends Seeder
         }
     }
 
+    public function menuSite()
+    {
+        $data = [
+
+            ['title'=>'Home','content_id'=>1, 'parent_id'=>0],
+
+            ['title'=>'Quienes Somos','content_id'=>2, 'parent_id'=>0],
+
+            ['title'=>'Servicios','parent_id'=>0],
+
+            ['title'=>'Adistramiento','content_id'=>5, 'parent_id'=>3],
+
+            ['title'=>'Hospedaje','content_id'=>6, 'parent_id'=>3],
+
+            ['title'=>'Gromming','content_id'=>7,'parent_id'=>3],
+
+            ['title'=>'Contacto','content_id'=>4, 'parent_id'=>0],
+
+
+        ];
+
+        foreach ($data as $key) {
+            
+            MenuSite::create($key);
+
+        }
+    }
 
 
 }

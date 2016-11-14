@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Content extends Model
 {
-	
+
 	protected $table='contents';
 
     protected $fillable=['title','slug','content'];
@@ -14,7 +14,7 @@ class Content extends Model
 	public function sections()
 	{
 
-		return $this->hasMany('App\Models\Content\Section','content_id','id');
+		return $this->hasMany('App\Models\Content\Section');
 
 	}
 	

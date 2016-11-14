@@ -6,7 +6,7 @@
 
 				<th align="center">Icono</th>
 
-				<th>Red Social</th>
+				<th>Titulo</th>
 
 				<th>Url</th>
 
@@ -19,14 +19,14 @@
 
 				@foreach($contents as $content)
 
-					<tr data-id="{{$social->id}}">
+					<tr data-id="{{$content->id}}">
 
 						<td width="50" align="center">
 							
 
 						</td>
 
-						<td></td>
+						<td>{{$content->title}}</td>
 
 						<td></td>
 

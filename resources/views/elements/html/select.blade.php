@@ -1,7 +1,7 @@
 {!! Form::select($select_name,$select_data,
 	isset($value) ? $value : null,
 	[
-		'id'=> $select_id, 
+		'id'=> isset($select_id) ? $select_id : null, 
 
 		'class'=> $select_class,
 		

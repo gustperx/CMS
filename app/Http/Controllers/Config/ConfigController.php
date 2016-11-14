@@ -10,13 +10,20 @@ use App\Http\Controllers\Controller;
 
 use App\Repository\Config\ConfigRepository;
 
+use App\Repository\Content\ContentRepository;
+
 class ConfigController extends Controller
 {
     private $configRepository;
 
+    private $contentRepository;
+
     public function __construct(){
 
         $this->configRepository = new ConfigRepository();
+
+        $this->contentRepository = new ContentRepository();
+
 
     }
 
@@ -24,11 +31,13 @@ class ConfigController extends Controller
     {
         $configs = $this->configRepository->getConfig();
 
+        $contentId = $this->contentRepository->getContentsList();
+
         $title = 'Configuracion de la Pagina';
 
         $breadcrumb = $this->configRepository->getBreadcrumbIndex();
 
-        return view('templates.config.index',compact('configs','title','breadcrumb'));
+        return view('templates.config.index',compact('configs','title','breadcrumb','contentId'));
 
     }
 

@@ -156,19 +156,6 @@ class Tables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('configs', function (Blueprint $table) {
-            
-            $table->increments('id');
-
-            $table->integer('logo_id')->unsigned();
-
-            $table->foreign('logo_id')->references('id')->on('files')
-                ->onUpdate('cascade')->onDelete('cascade');            
-
-            $table->string('title', 100);
-
-            $table->timestamps();
-        });        
 
         Schema::create('states', function (Blueprint $table) {
 
@@ -274,6 +261,8 @@ class Tables extends Migration
 
             $table->string('title', 50);
 
+            $table->string('subtitle', 50);
+
             $table->string('slug', 50)->unique();
 
             $table->string('content', 50);
@@ -282,6 +271,42 @@ class Tables extends Migration
 
         });
 
+        Schema::create('configs', function (Blueprint $table) {
+            
+            $table->increments('id');
+
+            $table->integer('logo_id')->unsigned();
+
+            $table->foreign('logo_id')->references('id')->on('files')
+                ->onUpdate('cascade')->onDelete('cascade');            
+
+            $table->integer('home_id')->unsigned();
+
+            $table->foreign('home_id')->references('id')->on('contents')
+                ->onUpdate('cascade')->onDelete('cascade');            
+
+            $table->string('admin_title', 100);
+
+            $table->string('site_title', 100);
+
+            $table->string('title', 100);
+
+            $table->timestamps();
+        });        
+
+
+
+        Schema::create('animations', function (Blueprint $table) {
+
+            $table->increments('id');
+
+            $table->string('name', 50);
+
+            $table->timestamps();
+
+
+        });
+        
         Schema::create('sections', function (Blueprint $table) {
 
             $table->increments('id');
@@ -292,6 +317,8 @@ class Tables extends Migration
 
             $table->string('color', 7);
 
+            $table->integer('animation_delay')->unsigned();
+
             $table->enum('text_align', ['Izquierdo', 'Centro', 'Derecho'])->default('Izquierdo');
 
             $table->integer('content_id')->unsigned();
@@ -299,8 +326,109 @@ class Tables extends Migration
             $table->foreign('content_id')->references('id')->on('contents')
                 ->onUpdate('cascade')->onDelete('cascade');            
 
+            $table->integer('animation_id')->unsigned();
+
+            $table->foreign('animation_id')->references('id')->on('animations')
+                ->onUpdate('cascade')->onDelete('cascade');            
+
+
             $table->timestamps();
 
+
+        });
+
+        Schema::create('site_menus', function (Blueprint $table) {
+
+            $table->increments('id');
+
+            $table->string('title', 50);
+            
+            $table->string('icon', 50);
+            
+            $table->string('url', 150);
+
+            $table->integer('content_id')->unsigned();
+
+            $table->integer('parent_id')->unsigned();
+
+            $table->timestamps();
+
+        });
+
+        Schema::create('modules', function (Blueprint $table) {
+
+            $table->increments('id');
+            
+            $table->string('name', 50);
+
+            $table->string('view', 50);
+
+            $table->enum('type', ['Estático', 'Dinámico'])->default('Estático');
+
+            $table->integer('file_id')->unsigned();
+
+            $table->foreign('file_id')->references('id')->on('files');
+            
+            $table->timestamps();
+
+        });
+
+        Schema::create('types_elements', function (Blueprint $table) {
+
+            $table->increments('id');
+            
+            $table->string('name', 20);
+
+            $table->timestamps();
+
+        });
+
+        Schema::create('elements', function (Blueprint $table) {
+
+            $table->increments('id');
+            
+            $table->integer('module_id')->unsigned();
+
+            $table->foreign('module_id')->references('id')->on('modules');
+
+            $table->integer('type_id')->unsigned();
+
+            $table->foreign('type_id')->references('id')->on('types_elements');
+            
+            $table->timestamps();
+
+        });
+
+        Schema::create('sections_modules', function (Blueprint $table) {
+
+            $table->increments('id');
+                        
+            $table->integer('section_id')->unsigned();
+
+            $table->foreign('section_id')->references('id')->on('sections');
+
+            $table->integer('module_id')->unsigned();
+
+            $table->foreign('module_id')->references('id')->on('modules');
+
+            $table->timestamps();
+
+        });
+
+
+        Schema::create('elements_modules', function (Blueprint $table) {
+
+            $table->increments('id');
+                        
+            $table->integer('elements_id')->unsigned();
+
+            $table->foreign('elements_id')->references('id')->on('elements');
+
+            $table->integer('section_module_id')->unsigned();
+
+            $table->foreign('section_module_id')->references('id')->on('sections_modules');
+
+            $table->timestamps();
 
         });
 
@@ -309,37 +437,48 @@ class Tables extends Migration
 
     public function down()
     {
-        Schema::drop('social_links');      
 
-        Schema::drop('socials');        
+        Schema::dropIfExists('social_links');      
 
-        Schema::drop('menus_lvl3');
+        Schema::dropIfExists('socials');        
 
-        Schema::drop('menus_lvl2');
+        Schema::dropIfExists('menus_lvl3');
 
-        Schema::drop('menus_lvl1');
+        Schema::dropIfExists('menus_lvl2');
 
-        Schema::drop('menus');
+        Schema::dropIfExists('menus_lvl1');
 
-        Schema::drop('clubs_teams');  
+        Schema::dropIfExists('menus');
 
-        Schema::drop('clubs');  
+        Schema::dropIfExists('clubs_teams');  
 
-        Schema::drop('configs');
+        Schema::dropIfExists('clubs');  
 
-        Schema::drop('files');  
+        Schema::dropIfExists('cities');  
+
+        Schema::dropIfExists('states');  
+
+        Schema::dropIfExists('positions');  
+
+        Schema::dropIfExists('configs');
+
+        Schema::dropIfExists('sections_modules');  
+
+        Schema::dropIfExists('sections');  
+
+        Schema::dropIfExists('contents');  
         
-        Schema::drop('cities');  
+        Schema::dropIfExists('elements');  
 
-        Schema::drop('states');  
+        Schema::dropIfExists('types_elements');  
 
-        Schema::drop('positions');  
+        Schema::dropIfExists('modules');  
 
-        Schema::drop('sections');  
+        Schema::dropIfExists('files');        
 
-        Schema::drop('contents');  
+        Schema::dropIfExists('animations');          
 
-
+        Schema::dropIfExists('site_menus');          
 
     }
 }

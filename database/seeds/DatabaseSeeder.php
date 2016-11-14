@@ -15,12 +15,15 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
         $this->call(UserSeeder::class);
+        
+        $this->call(ContentSeeder::class);
 
         $this->call(ConfigSeeder::class);
+        
+        $this->call(ModuleSeeder::class);
 
         $this->call(ClubSeeder::class);
 
-        $this->call(ContentSeeder::class);
 
         Model::reguard();
     }

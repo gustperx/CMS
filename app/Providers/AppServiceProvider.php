@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Blade;
+
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,8 +15,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-    }
+         Blade::directive('upper', function($expression) {
+
+            return "<?php echo strtoupper($expression); ?>";
+            
+        });    
+
+     }
 
     /**
      * Register any application services.

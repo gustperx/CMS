@@ -323,7 +323,7 @@ $(document).ready(function () {
 /************************************************************************************ SCROLL TO NAV. STARTS */
 
 $(document).ready(function() {
-	$('.nav').onePageNav({
+/*	$('.nav').onePageNav({
 		filter: ':not(.external)',
 		begin: function() {
 		console.log('start')
@@ -332,7 +332,7 @@ $(document).ready(function() {
 		console.log('stop')
 		}
 	});
-
+*/
 });
 
 /************************************************************************************ STICKY NAV. STARTS */
