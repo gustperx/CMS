@@ -59,13 +59,18 @@ class Tables extends Migration
 
         });
 
-        Schema::create('menus_lvl1', function (Blueprint $table) {
+        Schema::create('menus_admins', function (Blueprint $table) {
 
             $table->increments('id');
 
             $table->integer('menu_id')->unsigned();
 
+            $table->foreign('menu_id')->references('id')->on('menus')
+                ->onUpdate('cascade')->onDelete('cascade');            
+
             $table->string('title', 60);
+
+            $table->integer('parent_id')->unsigned();            
 
             $table->string('description', 120)->nullable();
 
@@ -76,58 +81,6 @@ class Tables extends Migration
             $table->string('icon', 30)->nullable();
 
             $table->integer('order')->unsigned();
-
-            $table->foreign('menu_id')->references('id')->on('menus')
-                ->onUpdate('cascade')->onDelete('cascade');
-
-            $table->timestamps();
-        });
-
-        Schema::create('menus_lvl2', function (Blueprint $table) {
-
-            $table->increments('id');
-
-            $table->integer('menu_lvl1_id')->unsigned();
-
-            $table->string('title', 60);
-
-            $table->string('description', 120)->nullable();
-
-            $table->string('route', 100)->nullable();
-
-            $table->string('image', 100)->nullable();            
-
-            $table->string('icon', 30)->nullable();
-
-            $table->integer('order')->unsigned();
-
-            $table->foreign('menu_lvl1_id')->references('id')->on('menus_lvl1')
-                ->onUpdate('cascade')->onDelete('cascade');
-
-            $table->timestamps();
-
-        });
-
-        Schema::create('menus_lvl3', function (Blueprint $table) {
-
-            $table->increments('id');
-
-            $table->integer('menu_lvl2_id')->unsigned();
-
-            $table->string('title', 60);
-
-            $table->string('description', 120)->nullable();
-
-            $table->string('route', 100)->nullable();
-
-            $table->string('image', 100)->nullable();            
-
-            $table->string('icon', 30)->nullable();
-
-            $table->integer('order')->unsigned();
-
-            $table->foreign('menu_lvl2_id')->references('id')->on('menus_lvl2')
-                ->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
 
@@ -189,9 +142,6 @@ class Tables extends Migration
 
             $table->integer('file_id')->unsigned();
             
-            $table->foreign('file_id')->references('id')->on('files')
-                ->onUpdate('cascade')->onDelete('cascade');     
-
             $table->string('name', 50);
 
             $table->longText('about');
@@ -366,8 +316,6 @@ class Tables extends Migration
             $table->enum('type', ['Estático', 'Dinámico'])->default('Estático');
 
             $table->integer('file_id')->unsigned();
-
-            $table->foreign('file_id')->references('id')->on('files');
             
             $table->timestamps();
 
@@ -415,7 +363,6 @@ class Tables extends Migration
 
         });
 
-
         Schema::create('elements_modules', function (Blueprint $table) {
 
             $table->increments('id');
@@ -423,6 +370,8 @@ class Tables extends Migration
             $table->integer('elements_id')->unsigned();
 
             $table->foreign('elements_id')->references('id')->on('elements');
+
+            $table->text('content');
 
             $table->integer('section_module_id')->unsigned();
 
@@ -441,12 +390,8 @@ class Tables extends Migration
         Schema::dropIfExists('social_links');      
 
         Schema::dropIfExists('socials');        
-
-        Schema::dropIfExists('menus_lvl3');
-
-        Schema::dropIfExists('menus_lvl2');
-
-        Schema::dropIfExists('menus_lvl1');
+        
+        Schema::dropIfExists('menus_admins');
 
         Schema::dropIfExists('menus');
 
@@ -462,19 +407,21 @@ class Tables extends Migration
 
         Schema::dropIfExists('configs');
 
+        Schema::dropIfExists('elements_modules');  
+
+        Schema::dropIfExists('elements');  
+
+        Schema::dropIfExists('types_elements');         
+
         Schema::dropIfExists('sections_modules');  
+
+        Schema::dropIfExists('modules');  
+
+        Schema::dropIfExists('files');         
 
         Schema::dropIfExists('sections');  
 
         Schema::dropIfExists('contents');  
-        
-        Schema::dropIfExists('elements');  
-
-        Schema::dropIfExists('types_elements');  
-
-        Schema::dropIfExists('modules');  
-
-        Schema::dropIfExists('files');        
 
         Schema::dropIfExists('animations');          
 

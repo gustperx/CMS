@@ -25,4 +25,11 @@ class SectionModule extends Model
     	
     }
 	
+    public function elementsModules()
+    {
+
+        return $this->hasMany('App\Models\Content\ElementModule','section_module_id','id');
+        
+    }
+    
 }

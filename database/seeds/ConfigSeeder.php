@@ -24,6 +24,8 @@ use App\Models\File\File;
 
 use App\Models\Menu\MenuSite;
 
+use App\Models\Menu\MenuAdmin;
+
 
 class ConfigSeeder extends Seeder
 {
@@ -40,18 +42,13 @@ class ConfigSeeder extends Seeder
 
         $this->menu();
 
-        $this->menuLvl1();
-
-        $this->menuLvl2();
-
-        $this->menuLvl3();
-
         $this->state();
 
         $this->city();
 
         $this->menuSite();
       
+        $this->menuAdmin();
 
     }
 
@@ -148,70 +145,6 @@ class ConfigSeeder extends Seeder
         foreach ($data as $key) {
             
             Menu::create($key);
-
-        }
-    }
-
-    public function menuLvl1()
-    {
-
-        $data=[
-
-            ['menu_id'=>1,'title'=>'Configuraciónes','route'=>'','icon'=>'fa fa-cog'],
-
-            ['menu_id'=>1,'title'=>'Clubes','route'=>'','icon'=>'fa fa-users'],
-
-            ['menu_id'=>1,'title'=>'Contenidos','route'=>'','icon'=>'fa fa-newspaper-o'],
-
-        ];
-
-        foreach ($data as $key) {
-            
-            MenuLvl1::create($key);
-
-        }
-    }
-
-    public function menuLvl2()
-    {
-
-        $data=[
-
-            ['menu_lvl1_id'=>1,'title'=>'Sistema','route'=>'index_config','icon'=>'fa fa-cog'],
-
-            ['menu_lvl1_id'=>1,'title'=>'Redes Sociales','route'=>'','icon'=>'fa fa-comments'],
-
-            ['menu_lvl1_id'=>2,'title'=>'Lista de Clubes','route'=>'index_club','icon'=>'fa fa-comments'],
-
-            ['menu_lvl1_id'=>2,'title'=>'Crear Club','route'=>'create_club','icon'=>'fa fa-plus'],
-
-            ['menu_lvl1_id'=>3,'title'=>'Crear Contenido','route'=>'create_content','icon'=>'fa fa-plus'],
-
-            ['menu_lvl1_id'=>3,'title'=>'Lista Contenidos','route'=>'index_content','icon'=>'fa fa-search'],
-
-        ];
-
-        foreach ($data as $key) {
-            
-            MenuLvl2::create($key);
-
-        }
-    }
-
-    public function menuLvl3()
-    {
-
-        $data=[
-
-            ['menu_lvl2_id'=>2,'title'=>'Agregar','route'=>'create_social','icon'=>'fa fa-plus'],
-
-            ['menu_lvl2_id'=>2,'title'=>'Ver Redes','route'=>'index_social','icon'=>'fa fa-search'],
-
-        ];
-
-        foreach ($data as $key) {
-            
-            MenuLvl3::create($key);
 
         }
     }
@@ -796,6 +729,46 @@ class ConfigSeeder extends Seeder
 
         }
     }
+
+    public function menuAdmin()
+    {
+
+        $data = [
+
+            ['menu_id'=>1,'parent_id'=>0,'title'=>'Configuraciónes','route'=>'','icon'=>'fa fa-cog'],
+
+            ['menu_id'=>1,'parent_id'=>1,'title'=>'Sistema','route'=>'index_config','icon'=>'fa fa-cog'],
+
+            ['menu_id'=>1,'parent_id'=>1,'title'=>'Redes Sociales','route'=>'','icon'=>'fa fa-comments'],
+
+            ['menu_id'=>1,'parent_id'=>3,'title'=>'Agregar','route'=>'create_social','icon'=>'fa fa-plus'],
+
+            ['menu_id'=>1,'parent_id'=>3,'title'=>'Ver Redes','route'=>'index_social','icon'=>'fa fa-search'],
+
+            ['menu_id'=>1,'parent_id'=>0,'title'=>'Clubes','route'=>'','icon'=>'fa fa-users'],
+
+            ['menu_id'=>1,'parent_id'=>6,'title'=>'Agregar','route'=>'create_club','icon'=>'fa fa-users'],
+
+            ['menu_id'=>1,'parent_id'=>6,'title'=>'Ver Lista','route'=>'index_club','icon'=>'fa fa-users'],
+
+            ['menu_id'=>1,'parent_id'=>0,'title'=>'Modulos','route'=>'','icon'=>'fa fa-database'],
+
+            ['menu_id'=>1,'parent_id'=>9,'title'=>'Agregar','route'=>'create_module','icon'=>'fa fa-plus'],
+
+            ['menu_id'=>1,'parent_id'=>9,'title'=>'Ver Modulo','route'=>'index_module','icon'=>'fa fa-search'],
+
+
+        ];
+
+        foreach ($data as $key) {
+            
+            MenuAdmin::create($key);
+
+        }
+
+    }
+
+
 
 
 }

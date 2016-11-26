@@ -41,8 +41,6 @@ class SiteRepository extends BaseRepository
 
 	    foreach ($content->sections as $section) {
 
-	        $color=$section->color;
-
 	        $top=view('templates.site.html.section_top',compact('section'));
 
 	        $botton=view('templates.site.html.section_botton');
@@ -53,8 +51,8 @@ class SiteRepository extends BaseRepository
 
 	                case 'Estático':
 
-	                    $middle= view('templates.site.modules.'.$sectionModule->module->view,compact('sectionModule'));
-
+	                    $middle.= view('templates.site.modules.'.$sectionModule->module->view,compact('sectionModule'));
+			           	
 	                    break;
 
 	                case 'Dinámico':
@@ -68,7 +66,7 @@ class SiteRepository extends BaseRepository
 	                    break;
 	            }
 	        }
-	        
+	        //echo $middle;
 	        $body.=$top.$middle.$botton;
 
 	        $top='';$middle='';$botton='';

@@ -50,45 +50,44 @@
 
 				<nav role="navigation" class="widget-body">
 
-				      @foreach(MainMenu::get() as $menu)
 
 				      	<ul class="acc-menu">
 
-				      		<li class="nav-separator">{{$menu->title}}</li>
+				      		<li class="nav-separator">Menu de Opciones</li>
 
-					        @foreach($menu->menulvl1 as $lvl1)
+							@foreach(MainMenu::get() as $menuLv1)
+
 								<li>
 
 									<a href="javascript:;">
 
-										<i class="{{$lvl1->icon}}"></i>
+										<i class="{{$menuLv1->icon}}"></i>
 
-										<span>{{$lvl1->title}}</span>
+										<span>{{$menuLv1->title}}</span>
 									</a>
 
 									<ul class="acc-menu">
 
-										@foreach($lvl1->menulvl2 as $lvl2)
+										@foreach($menuLv1->subMenu as $menuLvl2)
 
-											@if(count($lvl2->menulvl3)>0)
+											@if(count($menuLvl2->subMenu)>0)
 
 												<li>	
 
 													<a href="javascript:;">
 
-														{{$lvl2->title}}
+														{{$menuLvl2->title}}
 
 													</a>
-
 													<ul class="acc-menu">
 
-														@foreach($lvl2->menulvl3 as $lvl3)	
+														@foreach($menuLvl2->subMenu as $menuLvl3)	
 
 															<li> 
 
-																<a href="{{route($lvl3->route)}}">
+																<a href="{{route($menuLvl3->route)}}">
 
-																	{{$lvl3->title}}
+																	{{$menuLvl3->title}}
 
 																</a> 
 
@@ -98,15 +97,16 @@
 
 													</ul>
 
+
 												</li>
 
 											@else
 
 												<li>	
 
-													<a href="{{route($lvl2->route)}}">
+													<a href="{{route($menuLvl2->route)}}">
 
-														{{$lvl2->title}}
+														{{$menuLvl2->title}}
 
 													</a>
 
@@ -120,10 +120,10 @@
 
 								</li>
 
-					      	@endforeach()
+
+							@endforeach()
 
 				      	</ul>
-				      @endforeach()
 				      
 				</nav>
 

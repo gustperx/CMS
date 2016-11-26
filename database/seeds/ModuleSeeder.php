@@ -10,6 +10,10 @@ use App\Models\Module\TypeElement;
 
 use App\Models\Content\SectionModule;
 
+use App\Models\Content\ElementModule;
+
+use Faker\Factory as Faker;
+
 class ModuleSeeder extends Seeder
 {
     public function run()
@@ -22,6 +26,8 @@ class ModuleSeeder extends Seeder
         $this->element();
 
         $this->sectionModule();
+
+        $this->elementModule();
 
     }
 
@@ -106,6 +112,8 @@ class ModuleSeeder extends Seeder
 
             ['section_id'=>1,'module_id'=>1],
 
+            ['section_id'=>2,'module_id'=>1],
+
         ];
 
         foreach ($data as $key) {
@@ -113,6 +121,61 @@ class ModuleSeeder extends Seeder
             SectionModule::create($key);
 
         }
+    }
+
+    public function elementModule()
+    {
+
+        $faker= Faker::create();
+
+        $data=[
+
+            ['section_module_id'=>1,'elements_id'=>1,'content'=>'fa fa-user'],
+
+            ['section_module_id'=>1,'elements_id'=>2,'content'=>$faker->realtext(10,2)],
+
+            ['section_module_id'=>1,'elements_id'=>3,'content'=>$faker->realtext(180)],
+
+            ['section_module_id'=>1,'elements_id'=>4,'content'=>'fa fa-users'],
+
+            ['section_module_id'=>1,'elements_id'=>5,'content'=>$faker->realtext(10)],
+
+            ['section_module_id'=>1,'elements_id'=>6,'content'=>$faker->realtext(180)],
+
+            ['section_module_id'=>1,'elements_id'=>7,'content'=>'fa fa-plus'],
+
+            ['section_module_id'=>1,'elements_id'=>8,'content'=>$faker->realtext(13)],
+
+            ['section_module_id'=>1,'elements_id'=>9,'content'=>$faker->realtext(180)],
+
+            ['section_module_id'=>2,'elements_id'=>1,'content'=>'fa fa-user'],
+
+            ['section_module_id'=>2,'elements_id'=>2,'content'=>$faker->realtext(10,2)],
+
+            ['section_module_id'=>2,'elements_id'=>3,'content'=>$faker->realtext(180)],
+
+            ['section_module_id'=>2,'elements_id'=>4,'content'=>'fa fa-users'],
+
+            ['section_module_id'=>2,'elements_id'=>5,'content'=>$faker->realtext(10)],
+
+            ['section_module_id'=>2,'elements_id'=>6,'content'=>$faker->realtext(180)],
+
+            ['section_module_id'=>2,'elements_id'=>7,'content'=>'fa fa-plus'],
+
+            ['section_module_id'=>2,'elements_id'=>8,'content'=>$faker->realtext(13)],
+
+            ['section_module_id'=>2,'elements_id'=>9,'content'=>$faker->realtext(180)],
+
+        ];
+        
+        foreach ($data as $key)
+        {
+
+            ElementModule::create($key);
+
+        }
+
+
     }
 
 

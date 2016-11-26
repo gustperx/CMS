@@ -17,4 +17,10 @@ class Module extends Model
 
 	}
 	
+	public function image()
+	{
+
+		return $this->hasOne('App\Models\File\File','id','file_id');
+
+	}
 }

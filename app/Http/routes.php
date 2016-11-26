@@ -35,6 +35,23 @@ Route::group(['prefix' => 'admin/social','middleware' => ['auth'], 'namespace' =
 
 });
 
+Route::group(['prefix' => 'admin/module','middleware' => ['auth'], 'namespace' => 'Module'], function(){
+
+    Route::get('/',            ['uses' => 'ModuleController@index',  'as' => 'index_module']);
+
+    Route::get('/create',      ['uses' => 'ModuleController@create',  'as' => 'create_module']);
+
+    Route::get('/edit/{id}',['uses' => 'ModuleController@edit',  'as' => 'edit_module']);
+
+    Route::post('/store',['uses' => 'ModuleController@store',  'as' => 'store_module']);
+
+    Route::post('/update/{id}',['uses' => 'ModuleController@update',  'as' => 'update_module']);
+
+    Route::get('/destroy/{id}',['uses' => 'ModuleController@destroy',  'as' => 'destroy_module']);
+
+});
+
+
 Route::group(['prefix' => 'admin/club','middleware' => ['auth'], 'namespace' => 'Club'], function(){
 
     Route::get('/',            ['uses' => 'ClubController@index',  'as' => 'index_club']);
